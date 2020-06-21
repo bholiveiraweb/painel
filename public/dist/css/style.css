@@ -1,0 +1,150 @@
+body {
+	background: url('/dist/img/pattern.jpg');
+	font-family: Lato, 'sans-serif';
+	font-smoothing: antialiased;
+}
+
+body .boxed {
+	max-width: 1260px;
+}
+
+.wrapper {
+	min-height: 100vh;
+}
+
+.navbar {
+	background: linear-gradient(to bottom, #0073C0 1%, #00568A 100%);
+	border-bottom: 1px solid #0073C0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.navbar .navbar-nav .nav-link {
+	position: relative;
+	color: #fff;
+	margin-left: 1px;
+	margin-right: 1px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 700;
+	z-index: 2;
+}
+
+.navbar .navbar-nav .nav-link::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	background-color: #5b90e5;
+	z-index: -1;
+}
+
+.navbar .navbar-nav .nav-link:hover::before {
+	height: 100%;
+}
+
+.navbar-toggler, .navbar-toggler:focus, .navbar-toggler:hover {
+	outline: none;
+}
+
+.navbar-toggler .fa-bars {
+	color: #666;
+}
+
+.product-item a {
+	text-decoration: none;
+}
+
+.product-item .border-light {
+	border-color: #eaeaea !important;
+}
+
+.product-info h1 {
+	font-size: 1.1rem;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: #21759b;
+}
+
+.product-info .product-price {
+	color: #333;
+	font-size: 1.1rem;
+}
+
+.product-info .product-price button {
+	border: 2px solid #b34040;
+	color: #b34040;
+	font-weight: bold;
+}
+
+.product-item a:hover .product-price button {
+	background-color: #b34040;
+	color: #fff;
+}
+
+aside.aside h2 {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+}
+
+aside.aside h2::after {
+	position: absolute;
+	content: "";
+	bottom: -1px;
+	left: 50%;
+	width: 100px;
+	height: 1px;
+	transform: translateX(-50%);
+	background-color: #0073c3;
+}
+
+aside .departments ul, aside .departments ul li {
+	list-style: none;
+	text-align: center;
+	padding-left: 0;
+	width: 100%;
+}
+
+aside .departments ul li a {
+	color: #333;
+	text-decoration: none;
+	font-size: .8rem;
+	font-weight: bold;
+	display: block;
+	padding: 10px;
+}
+
+aside .departments ul li a:hover {
+	color: #0073c3;
+}
+
+footer.footer {
+	background: #002646;
+	color: #fff;
+	text-align: center;
+}
+
+footer.footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+footer.footer a:hover {
+	color: #0073c3;
+}

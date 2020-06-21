@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pô Birigui | Loja Virtual</title>
+
+    <link rel="stylesheet" href="/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/style.css?ver={{ 'now'| date('U') }}">
+</head>
+
+<body>
+    <div class="boxed container bg-white">
+    	<header class="header">
+    		<div class="row py-4">
+    			<div class="col-7 col-sm-4 col-md-3 col-lg-2">
+	    			<a class="header-brand">
+	    				<img src="/dist/img/po-logo-novo.png" alt="Logo Pô Birigui" class="img-fluid">
+	    			</a>
+    			</div>
+    			<div class="col-5 col-sm-7 col-md-9 col-lg-10">
+    				<button class="navbar-toggler float-right d-block d-md-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+					    <i class="fas fa-bars"></i>
+					</button>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<nav class="navbar navbar-expand-md w-100">
+				  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				    <ul class="navbar-nav mr-auto">
+				      <li class="nav-item">
+				        <a class="nav-link" href="http://localhost:8080/" title="Home">Home</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="#" title="Notícias">Notícias</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="#" title="Eventos">Eventos</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="#" title="Contato">Contato</a>
+				      </li>
+				    </ul>
+				  </div>
+				</nav>
+    		</div>
+    	</header>
+    	<section class="wrapper">
+    		<div class="row">
+	    		<section class="main-area col-md-9">
+	    			<div class="row py-4 px-2">
+	    				{% if products %}
+	    				{% for product in products %}
+		    			<article class="product-item col-sm-6 col-lg-4 px-2 mb-3">
+		    				<a href="{{ product.link }}" title="{{ product.title }}" target="_blank">
+		    					<div class="p-3 border border-light">
+				    				<div class="product-img">
+				    					<img src="/dist/img/load.gif" class="lazy img-fluid" data-src="/uploads/images/{{ product.image }}" alt="{{ product.link }}">
+				    				</div>
+				    				<div class="product-info">
+				    					<h1>{{ product.title }}</h1>
+				    					<div class="product-price d-flex justify-content-between align-items-center">
+				    						<strong>R$ {{ product.price }}</strong>
+				    						<button class="btn">Ver mais</button>
+				    					</div>
+				    				</div>
+			    				</div>
+		    				</a>
+		    			</article>
+		    			{% endfor %}
+		    			{% else %}
+		    			<div class="col-12">
+		    				<h1>Nenhum resultado encontrado :(</h1>
+		    			</div>
+		    			{% endif %}
+	    			</div>
+	    		</section>
+	    		<aside class="aside col-md-3">
+	    			<div class="departments row p-4">
+	    				{% if departments %}
+	    				<h2>Departamentos</h2>
+	    				<ul>
+	    					{% for department in departments %}
+	    					<li>
+	    						<a href="/departamento/{{ department.slug }}" title="{{ department.title }}">{{ department.title }}</a>
+	    					</li>
+	    					{% endfor %}
+	    				</ul>
+	    				{% endif %}
+	    			</div>
+	    		</aside>
+    		</div>
+    	</section>
+    	<footer class="footer row py-4">
+    		<div class="col-12">
+    			<p class="m-0"><small>Copyright &copy; {{ "now"|date('Y') }} - Todos os direitos reservados.</small></p>
+    		</div>
+    	</footer>
+    </div>
+
+	<script src="dist/js/jquery.min.js"></script>
+	<script src="dist/js/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script>
+		window.addEventListener('scroll', function() {
+			if (window.scrollY >= 210) {
+				document.querySelector('nav.navbar').classList.add('fixed-top');
+			} else {
+				document.querySelector('nav.navbar').classList.remove('fixed-top');
+			}
+		})
+
+		!function(window){
+		  var $q = function(q, res){
+		        if (document.querySelectorAll) {
+		          res = document.querySelectorAll(q);
+		        } else {
+		          var d=document
+		            , a=d.styleSheets[0] || d.createStyleSheet();
+		          a.addRule(q,'f:b');
+		          for(var l=d.all,b=0,c=[],f=l.length;b<f;b++)
+		            l[b].currentStyle.f && c.push(l[b]);
+
+		          a.removeRule(0);
+		          res = c;
+		        }
+		        return res;
+		      }
+		    , addEventListener = function(evt, fn){
+		        window.addEventListener
+		          ? this.addEventListener(evt, fn, false)
+		          : (window.attachEvent)
+		            ? this.attachEvent('on' + evt, fn)
+		            : this['on' + evt] = fn;
+		      }
+		    , _has = function(obj, key) {
+		        return Object.prototype.hasOwnProperty.call(obj, key);
+		      }
+		    ;
+
+		  function loadImage (el, fn) {
+		    var img = new Image()
+		      , src = el.getAttribute('data-src');
+		    img.onload = function() {
+		      if (!! el.parent)
+		        el.parent.replaceChild(img, el)
+		      else
+		        el.src = src;
+
+		      fn? fn() : null;
+		    }
+		    img.src = src;
+		  }
+
+		  function elementInViewport(el) {
+		    var rect = el.getBoundingClientRect()
+
+		    return (
+		       rect.top    >= 0
+		    && rect.left   >= 0
+		    && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+		    )
+		  }
+
+		    var images = new Array()
+		      , query = $q('img.lazy')
+		      , processScroll = function(){
+		          for (var i = 0; i < images.length; i++) {
+		            if (elementInViewport(images[i])) {
+		              loadImage(images[i], function () {
+		                images.splice(i, i);
+		              });
+		            }
+		          };
+		        }
+		      ;
+		    // Array.prototype.slice.call is not callable under our lovely IE8 
+		    for (var i = 0; i < query.length; i++) {
+		      images.push(query[i]);
+		    };
+
+		    processScroll();
+		    addEventListener('scroll',processScroll);
+		}(this);
+    </script>
+</body>
+
+</html>
