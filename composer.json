@@ -14,10 +14,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "App/"
+            "App\\": "app/"
         },
         "files": [
-            "App/Constants.php"
+            "app/Constants.php"
         ]
     }
 }
